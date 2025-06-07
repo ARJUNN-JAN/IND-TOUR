@@ -1,0 +1,57 @@
+{% extends "tour_planner/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Profile</h3>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        {% if user.socialaccount_set.all.0.get_avatar_url %}
+                            <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="Profile Picture" class="rounded-circle" width="100">
+                        {% else %}
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto" style="width: 100px; height: 100px;">
+                                <h1>{{ user.username.0|upper }}</h1>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <p><strong>Username:</strong> {{ user.username }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>Joined:</strong> {{ user.date_joined|date:"F j, Y" }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3>My Itineraries</h3>
+                </div>
+                <div class="card-body">
+                    {% if user.itineraries.all %}
+                        <div class="list-group">
+                            {% for itinerary in user.itineraries.all %}
+                                <a href="{% url 'itinerary_detail' itinerary.id %}" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">{{ itinerary.destination.name }}</h5>
+                                        <small>{{ itinerary.start_date|date:"M d, Y" }} - {{ itinerary.end_date|date:"M d, Y" }}</small>
+                                    </div>
+                                    <p class="mb-1">{{ itinerary.travel_type }} trip</p>
+                                    <small>Budget: ₹{{ itinerary.budget }}</small>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-center">You haven't created any itineraries yet.</p>
+                        <div class="text-center">
+                            <a href="{% url 'planner_selection' %}" class="btn btn-primary">Create an Itinerary</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

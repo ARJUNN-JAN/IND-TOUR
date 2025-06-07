@@ -1,0 +1,101 @@
+{% extends 'tour_planner/base.html' %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero Section -->
+    <div class="row align-items-center min-vh-75 py-5">
+        <div class="col-lg-6">
+            <div class="hero-content">
+                <h1 class="display-4 fw-bold mb-4" style="color: var(--dark-text);">
+                    Welcome to <span style="color: var(--primary-orange);">IND TOUR</span>
+                </h1>
+                <p class="lead mb-4" style="color: var(--dark-text);">
+                    Your AI-powered travel companion for exploring the incredible diversity of India
+                </p>
+                <a href="{% url 'planner_selection' %}" class="btn btn-lg me-3">
+                    <i class="fas fa-route me-2"></i>Start Planning
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center">
+            <div class="hero-image">
+                <i class="fas fa-globe-asia" style="font-size: 15rem; color: var(--light-orange); opacity: 0.8;"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Features Section -->
+    <div class="row py-5">
+        <div class="col-12 text-center mb-5">
+            <h2 class="display-5 fw-bold" style="color: var(--dark-text);">
+                Why Choose <span style="color: var(--primary-orange);">IND TOUR?</span>
+            </h2>
+            <p class="lead" style="color: var(--dark-text);">Discover what makes us the perfect travel planning companion</p>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+            <div class="feature-card h-100 p-4 text-center" style="background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1); transition: all 0.3s ease;">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-robot" style="font-size: 3rem; color: var(--primary-orange);"></i>
+                </div>
+                <h4 class="fw-bold mb-3" style="color: var(--dark-text);">AI Recommendations</h4>
+                <p style="color: var(--dark-text);">Get personalized destination suggestions based on your preferences, budget, and travel style</p>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+            <div class="feature-card h-100 p-4 text-center" style="background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1); transition: all 0.3s ease;">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-calendar-alt" style="font-size: 3rem; color: var(--secondary-orange);"></i>
+                </div>
+                <h4 class="fw-bold mb-3" style="color: var(--dark-text);">Detailed Itineraries</h4>
+                <p style="color: var(--dark-text);">Day-by-day plans tailored to your travel style with activities, dining, and accommodation suggestions</p>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 mb-4">
+            <div class="feature-card h-100 p-4 text-center" style="background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1); transition: all 0.3s ease;">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-utensils" style="font-size: 3rem; color: var(--accent-orange);"></i>
+                </div>
+                <h4 class="fw-bold mb-3" style="color: var(--dark-text);">Local Insights</h4>
+                <p style="color: var(--dark-text);">Discover authentic cuisine, cultural experiences, and hidden gems that only locals know about</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CTA Section -->
+    <div class="row py-5">
+        <div class="col-12">
+            <div class="cta-section text-center p-5" style="background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%); border-radius: 25px; color: white;">
+                <h3 class="display-6 fw-bold mb-3">Ready to Explore India?</h3>
+                <p class="lead mb-4">Join thousands of travelers who have discovered their perfect Indian adventure with us</p>
+                <a href="{% url 'planner_selection' %}" class="btn btn-light btn-lg" style="color: var(--primary-orange); font-weight: 600;">
+                    <i class="fas fa-plane me-2"></i>Plan Your Perfect Trip
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2) !important;
+}
+
+.min-vh-75 {
+    min-height: 75vh;
+}
+
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-image i {
+        font-size: 8rem !important;
+    }
+}
+</style>
+{% endblock %}

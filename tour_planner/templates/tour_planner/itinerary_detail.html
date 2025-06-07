@@ -1,0 +1,43 @@
+{% extends 'tour_planner/base.html' %}
+{% load tour_extras %}
+
+{% block content %}
+<h2>Your Itinerary for {{ itinerary.destination.name }}</h2>
+
+<div style="margin: 20px 0;">
+    <h3>Trip Details</h3>
+    <p><strong>Dates:</strong> {{ itinerary.start_date|date:"M d, Y" }} to {{ itinerary.end_date|date:"M d, Y" }}</p>
+    <p><strong>Budget:</strong> ₹{{ itinerary.budget }}</p>
+    <p><strong>Travel Type:</strong> {{ itinerary.travel_type }}</p>
+    <p><strong>Weather Information:</strong> {{ weather_info }}</p>
+</div>
+
+<div style="margin: 30px 0;">
+    <h3>Day-by-Day Itinerary</h3>
+    
+    {% for day in days %}
+    <div class="itinerary-day">
+        <h4>Day {{ day.day_number }} - {{ itinerary.start_date|add_days:day.day_number|date:"M d, Y" }}</h4>
+        
+        <div style="margin: 10px 0;">
+            <h5>Activities</h5>
+            <p style="white-space: pre-line;">{{ day.activities }}</p>
+        </div>
+        
+        <div style="margin: 10px 0;">
+            <h5>Accommodation</h5>
+            <p>{{ day.accommodation }}</p>
+        </div>
+        
+        <div style="margin: 10px 0;">
+            <h5>Meals</h5>
+            <p style="white-space: pre-line;">{{ day.meals }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div style="text-align: center; margin-top: 30px;">
+    <a href="{% url 'planner_selection' %}" class="btn">Plan Another Trip</a>
+</div>
+{% endblock %}

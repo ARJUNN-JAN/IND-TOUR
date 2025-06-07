@@ -1,0 +1,143 @@
+{% extends 'tour_planner/base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h1 class="display-4 fw-bold mb-4" style="color: var(--dark-text);">
+                How would you like to <span style="color: var(--primary-orange);">plan your trip?</span>
+            </h1>
+            <p class="lead" style="color: var(--dark-text);">
+                Choose the planning method that works best for you
+            </p>
+        </div>
+    </div>
+    
+    <div class="row justify-content-center g-4">
+        <!-- Manual Planning Option -->
+        <div class="col-lg-5 col-md-6">
+            <div class="planning-card h-100 p-4 text-center" style="background: white; border-radius: 25px; box-shadow: 0 15px 40px rgba(255, 107, 53, 0.1); transition: all 0.3s ease; border: 3px solid transparent;">
+                <div class="card-icon mb-4">
+                    <i class="fas fa-map-pin" style="font-size: 4rem; color: var(--primary-orange);"></i>
+                </div>
+                
+                <h3 class="fw-bold mb-3" style="color: var(--dark-text);">Manual Planning</h3>
+                
+                <div class="mb-3">
+                    <span class="badge px-3 py-2" style="background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%); color: white; border-radius: 20px; font-size: 0.9rem;">
+                        I know where I want to go
+                    </span>
+                </div>
+                
+                <p class="mb-4" style="color: var(--dark-text); line-height: 1.6;">
+                    Perfect for travelers who have already decided on their destination. 
+                    Choose your location and get a customized, detailed itinerary tailored to your preferences.
+                </p>
+                
+                <div class="features-list mb-4">
+                    <div class="feature-item mb-2">
+                        <i class="fas fa-check-circle me-2" style="color: var(--primary-orange);"></i>
+                        <small>Destination-specific recommendations</small>
+                    </div>
+                    <div class="feature-item mb-2">
+                        <i class="fas fa-check-circle me-2" style="color: var(--primary-orange);"></i>
+                        <small>Customized day-by-day itinerary</small>
+                    </div>
+                    <div class="feature-item mb-2">
+                        <i class="fas fa-check-circle me-2" style="color: var(--primary-orange);"></i>
+                        <small>Local attractions & hidden gems</small>
+                    </div>
+                </div>
+                
+                <a href="{% url 'manual_planner' %}" class="btn btn-lg w-100">
+                    <i class="fas fa-route me-2"></i>Select Destination
+                </a>
+            </div>
+        </div>
+        
+        <!-- AI Recommendation Option -->
+        <div class="col-lg-5 col-md-6">
+            <div class="planning-card h-100 p-4 text-center" style="background: white; border-radius: 25px; box-shadow: 0 15px 40px rgba(255, 107, 53, 0.1); transition: all 0.3s ease; border: 3px solid transparent;">
+                <div class="card-icon mb-4">
+                    <i class="fas fa-brain" style="font-size: 4rem; color: var(--secondary-orange);"></i>
+                </div>
+                
+                <h3 class="fw-bold mb-3" style="color: var(--dark-text);">AI Recommendation</h3>
+                
+                <div class="mb-3">
+                    <span class="badge px-3 py-2" style="background: linear-gradient(135deg, var(--secondary-orange) 0%, var(--accent-orange) 100%); color: white; border-radius: 20px; font-size: 0.9rem;">
+                        Help me decide where to go
+                    </span>
+                </div>
+                
+                <p class="mb-4" style="color: var(--dark-text); line-height: 1.6;">
+                    Let our AI analyze your preferences, budget, and travel style to suggest 
+                    the perfect destinations and create an amazing itinerary just for you.
+                </p>
+                
+                <div class="features-list mb-4">
+                    <div class="feature-item mb-2">
+                        <i class="fas fa-check-circle me-2" style="color: var(--secondary-orange);"></i>
+                        <small>Personalized destination matching</small>
+                    </div>
+                    <div class="feature-item mb-2">
+                        <i class="fas fa-check-circle me-2" style="color: var(--secondary-orange);"></i>
+                        <small>Budget-optimized suggestions</small>
+                    </div>
+                    <div class="feature-item mb-2">
+                        <i class="fas fa-check-circle me-2" style="color: var(--secondary-orange);"></i>
+                        <small>Smart travel recommendations</small>
+                    </div>
+                </div>
+                
+                <a href="{% url 'ai_recommendation' %}" class="btn btn-lg w-100" style="background: linear-gradient(135deg, var(--secondary-orange) 0%, var(--accent-orange) 100%);">
+                    <i class="fas fa-magic me-2"></i>Get AI Recommendations
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Additional Info Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="info-section text-center p-4" style="background: linear-gradient(135deg, #FFF5F0 0%, #FFE8DC 100%); border-radius: 20px;">
+                <h5 class="fw-bold mb-3" style="color: var(--dark-text);">
+                    <i class="fas fa-lightbulb me-2" style="color: var(--primary-orange);"></i>
+                    Not sure which option to choose?
+                </h5>
+                <p class="mb-0" style="color: var(--dark-text);">
+                    If you have a specific destination in mind, go with <strong>Manual Planning</strong>. 
+                    If you're open to suggestions and want to discover new places, try our <strong>AI Recommendation</strong>!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.planning-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(255, 107, 53, 0.2) !important;
+    border-color: var(--primary-orange) !important;
+}
+
+.feature-item {
+    color: var(--dark-text);
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .planning-card {
+        margin-bottom: 2rem;
+    }
+    
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .card-icon i {
+        font-size: 3rem !important;
+    }
+}
+</style>
+{% endblock %}

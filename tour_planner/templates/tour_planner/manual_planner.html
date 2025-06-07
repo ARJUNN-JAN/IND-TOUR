@@ -1,0 +1,60 @@
+{% extends 'tour_planner/base.html' %}
+
+{% block content %}
+<h2>Plan Your Trip</h2>
+<p>Select your destination and travel details</p>
+
+<form method="post">
+    {% csrf_token %}
+    
+    <div>
+        <label for="{{ form.destination.id_for_label }}">Destination:</label>
+        {{ form.destination }}
+        {% if form.destination.errors %}
+            <div class="error">{{ form.destination.errors }}</div>
+        {% endif %}
+    </div>
+    
+    <div>
+        <label for="{{ form.start_date.id_for_label }}">Start Date:</label>
+        {{ form.start_date }}
+        {% if form.start_date.errors %}
+            <div class="error">{{ form.start_date.errors }}</div>
+        {% endif %}
+    </div>
+    
+    <div>
+        <label for="{{ form.end_date.id_for_label }}">End Date:</label>
+        {{ form.end_date }}
+        {% if form.end_date.errors %}
+            <div class="error">{{ form.end_date.errors }}</div>
+        {% endif %}
+    </div>
+    
+    <div>
+        <label for="{{ form.budget.id_for_label }}">Budget (in Rupees):</label>
+        {{ form.budget }}
+        {% if form.budget.errors %}
+            <div class="error">{{ form.budget.errors }}</div>
+        {% endif %}
+    </div>
+    
+    <div>
+        <label for="{{ form.travel_type.id_for_label }}">Type of Travel:</label>
+        {{ form.travel_type }}
+        {% if form.travel_type.errors %}
+            <div class="error">{{ form.travel_type.errors }}</div>
+        {% endif %}
+    </div>
+    
+    <div>
+        <label for="{{ form.preferred_weather.id_for_label }}">Preferred Weather:</label>
+        {{ form.preferred_weather }}
+        {% if form.preferred_weather.errors %}
+            <div class="error">{{ form.preferred_weather.errors }}</div>
+        {% endif %}
+    </div>
+    
+    <button type="submit" class="btn">Generate Itinerary</button>
+</form>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "tour_planner/base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card">
+                <div class="card-header text-center">
+                    <i class="fas fa-sign-in-alt mb-3" style="font-size: 2rem;"></i>
+                    <h3>{% trans "Welcome Back!" %}</h3>
+                    <p class="mb-0">Sign in to continue your journey</p>
+                </div>
+                <div class="card-body">
+                    <form class="login" method="POST" action="{% url 'account_login' %}">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="id_login" class="form-label fw-semibold">
+                                <i class="fas fa-user me-2" style="color: var(--primary-orange);"></i>Email or Username
+                            </label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="id_login" 
+                                   name="login" 
+                                   placeholder="Enter your email or username"
+                                   required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="id_password" class="form-label fw-semibold">
+                                <i class="fas fa-lock me-2" style="color: var(--primary-orange);"></i>Password
+                            </label>
+                            <input type="password" 
+                                   class="form-control" 
+                                   id="id_password" 
+                                   name="password" 
+                                   placeholder="Enter your password"
+                                   required>
+                        </div>
+                        
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="id_remember" name="remember">
+                            <label class="form-check-label" for="id_remember">
+                                Remember me
+                            </label>
+                        </div>
+                        
+                        <div class="d-grid gap-2 mb-3">
+                            <button class="btn btn-primary btn-lg" type="submit">
+                                <i class="fas fa-sign-in-alt me-2"></i>{% trans "Sign In" %}
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="text-center mb-3">
+                        <div class="login-or my-3">
+                            <span class="px-3" style="background: white; color: var(--dark-text);">or</span>
+                            <hr style="margin-top: -12px; border-color: var(--light-orange);">
+                        </div>
+                        
+                        <a href="{% url 'google_oauth2_login' %}" class="btn btn-outline-danger btn-lg w-100 mb-3">
+                            <i class="fab fa-google me-2"></i>Continue with Google
+                        </a>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="row">
+                            <div class="col-6">
+                                <a href="{% url 'account_reset_password' %}" class="text-decoration-none" style="color: var(--primary-orange);">
+                                    <i class="fas fa-key me-1"></i>Forgot Password?
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <a href="{% url 'account_signup' %}" class="text-decoration-none" style="color: var(--primary-orange);">
+                                    <i class="fas fa-user-plus me-1"></i>Sign Up
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
